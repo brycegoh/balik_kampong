@@ -242,7 +242,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: events.map(
                     (Event e) {
                       return KampongTile(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, '/event?eventId=${e.id}');
+                        },
                         text: e.name,
                         imageUrl: e.imageUrl,
                       );

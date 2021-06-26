@@ -137,8 +137,10 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
 }
 
 class KampongBrowsingEventTile extends StatefulWidget {
+  final bool isClickable;
   final Event event;
-  const KampongBrowsingEventTile({Key? key, required this.event})
+  const KampongBrowsingEventTile(
+      {Key? key, required this.event, this.isClickable = true})
       : super(key: key);
 
   @override
@@ -147,6 +149,8 @@ class KampongBrowsingEventTile extends StatefulWidget {
 }
 
 class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
+  bool _isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -154,46 +158,71 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
 
   @override
   Widget build(BuildContext context) {
-    double height = ScreenSize.safeAreaHeight(context) * 0.2;
+    double height = ScreenSize.safeAreaHeight(context) * 0.27;
     double width = ScreenSize.safeAreaWidth(context) * 1;
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 1),
-      height: height,
-      width: width,
-      child: KampongColumnStartCenter(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            height: height * 0.6,
-            width: width,
-            decoration: new BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                image: new DecorationImage(
-                  fit: BoxFit.cover,
-                  image: new NetworkImage(
-                    widget.event.imageUrl,
-                  ),
-                )),
-          ),
-          KampongRowSpaceBetweenCenter(
-            children: [
-              KampongColumnStartStart(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5),
-                    child: Text(widget.event.name, style: KampongFonts.header),
-                  ),
-                  Text(widget.event.subheader, style: KampongFonts.subHeader),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 3),
-                child:
-                    Text(Jiffy(widget.event.dateHappening).format("dd/MM/yy")),
-              ),
-            ],
-          )
-        ],
+    return InkWell(
+      onTap: widget.isClickable
+          ? () {
+              Navigator.pushNamed(context, '/event?eventId=${widget.event.id}');
+            }
+          : null,
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          vertical: 1,
+        ),
+        height: height,
+        width: width,
+        child: KampongColumnStartCenter(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              height: height * 0.65,
+              width: width,
+              decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  image: new DecorationImage(
+                    fit: BoxFit.cover,
+                    image: new NetworkImage(
+                      widget.event.imageUrl,
+                    ),
+                  )),
+            ),
+            KampongRowSpaceBetweenCenter(
+              children: [
+                KampongColumnStartStart(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      child:
+                          Text(widget.event.name, style: KampongFonts.header),
+                    ),
+                    Text(widget.event.subheader, style: KampongFonts.subHeader),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 3),
+                  child: widget.isClickable
+                      ? Text(
+                          Jiffy(widget.event.dateHappening).format("dd/MM/yy"))
+                      : ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: KampongColors.blue,
+                            textStyle: KampongFonts.label,
+                          ),
+                          child: _isLoading
+                              ? SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: CircularProgressIndicator(),
+                                )
+                              : Text('Join'),
+                        ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

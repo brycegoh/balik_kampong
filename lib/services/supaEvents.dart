@@ -58,6 +58,18 @@ class SupaEvents {
     }
   }
 
+  static Future getEventById(int id) async {
+    Event? container;
+    PostgrestFilterBuilder query =
+        SupaClient.supaBaseClient.from('events').select().eq("id", id);
+
+    PostgrestResponse response = await query.execute();
+    if (response.error == null && response.data.length > 0) {
+      container = Event.fromJson(response.data[0]);
+    }
+    return container;
+  }
+
   static Future<dynamic> getNumOFParticipantsPerEvents({int? eventId}) async {
     PostgrestFilterBuilder query = SupaClient.supaBaseClient
         .from('users')

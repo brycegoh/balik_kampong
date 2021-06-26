@@ -9,6 +9,7 @@ import '../screens/forms/onboard.dart';
 import '../screens/navbar/app.dart';
 import '../screens/events/browseEvent.dart';
 import '../screens/communities/browseCommunities.dart';
+import '../screens/events/event.dart';
 // var noRouteHandler =
 //     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
 //   return PathErrorScreen();
@@ -56,10 +57,10 @@ var communityHandler = Handler(
   return BrowseCommunitiesScreen();
 });
 
-var specificCommunityHandler = Handler(
+var specificEventHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
-  String? communityId = params["communityId"]?.first;
-  return HomeScreen();
+  String eventId = params["eventId"]!.first;
+  return EventScreen(eventId: int.parse(eventId));
 });
 
 // var formRouteHandler =

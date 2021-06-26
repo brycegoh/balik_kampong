@@ -11,5 +11,6 @@ class Routes {
     router.define("/sign-up", handler: signupHandler);
     router.define("/browse-events", handler: eventsHandler);
     router.define("/browse-communities", handler: communityHandler);
+    router.define("/event", handler: specificEventHandler);
   }
 }
