@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'services/firestoreClient.dart';
 import './routes/fluroRouter.dart';
-import './provider/globalprovider.dart';
-import './screens/splashScreen.dart';
+import 'provider/user.dart';
+import 'screens/splashscreen/splashScreen.dart';
+import './utility/hiveBox.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,8 +30,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _init() async {
     PowerPuffRouter.initRouter();
-    await Firebase.initializeApp();
-    await FirestoreClient.addUser();
+    await HiveBox.initHive();
   }
 
   @override
@@ -41,10 +41,11 @@ class _MyAppState extends State<MyApp> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MultiProvider(
             providers: [
-              ChangeNotifierProvider(create: (context) => GlobalProvider()),
+              ChangeNotifierProvider(create: (context) => UserProvider()),
             ],
             child: MaterialApp(
-              title: 'powerpuff',
+              debugShowCheckedModeBanner: false,
+              title: 'Balik Kampong',
               theme: ThemeData(
                 backgroundColor: Colors.white,
               ),

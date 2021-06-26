@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class PaddedSafeArea extends StatelessWidget {
+class KampongPaddedSafeArea extends StatelessWidget {
   final Widget child;
-  PaddedSafeArea({required this.child});
+  KampongPaddedSafeArea({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,9 @@ class PaddedSafeArea extends StatelessWidget {
   }
 }
 
-class FullScreenContainer extends StatelessWidget {
+class KampongFullScreenContainer extends StatelessWidget {
   final Widget child;
-  FullScreenContainer({required this.child});
+  KampongFullScreenContainer({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class FullScreenContainer extends StatelessWidget {
   }
 }
 
-class FullHeightContainer extends StatelessWidget {
+class KampongFullHeightContainer extends StatelessWidget {
   final Widget child;
-  FullHeightContainer({required this.child});
+  KampongFullHeightContainer({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +41,9 @@ class FullHeightContainer extends StatelessWidget {
   }
 }
 
-class FullWidthContainer extends StatelessWidget {
+class KampongFullWidthContainer extends StatelessWidget {
   final Widget child;
-  FullWidthContainer({required this.child});
+  KampongFullWidthContainer({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,9 @@ it is configured as named
 RowMainAxisCrossAxis
  */
 
-class ColumnCenterCenter extends StatelessWidget {
+class KampongColumnCenterCenter extends StatelessWidget {
   final List<Widget> children;
-  ColumnCenterCenter({required this.children});
+  KampongColumnCenterCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +74,9 @@ class ColumnCenterCenter extends StatelessWidget {
   }
 }
 
-class ColumnEndCenter extends StatelessWidget {
+class KampongColumnEndCenter extends StatelessWidget {
   final List<Widget> children;
-  ColumnEndCenter({required this.children});
+  KampongColumnEndCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +88,9 @@ class ColumnEndCenter extends StatelessWidget {
   }
 }
 
-class ColumnEndStart extends StatelessWidget {
+class KampongColumnEndStart extends StatelessWidget {
   final List<Widget> children;
-  ColumnEndStart({required this.children});
+  KampongColumnEndStart({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -102,10 +102,10 @@ class ColumnEndStart extends StatelessWidget {
   }
 }
 
-class ColumnCenterStart extends StatelessWidget {
+class KampongColumnCenterStart extends StatelessWidget {
   final List<Widget> children;
   bool mainAxisMin;
-  ColumnCenterStart({required this.children, this.mainAxisMin = false});
+  KampongColumnCenterStart({required this.children, this.mainAxisMin = false});
 
   @override
   Widget build(BuildContext context) {
@@ -118,9 +118,9 @@ class ColumnCenterStart extends StatelessWidget {
   }
 }
 
-class ColumnSpaceBetweenStretch extends StatelessWidget {
+class KampongColumnSpaceBetweenStretch extends StatelessWidget {
   final List<Widget> children;
-  ColumnSpaceBetweenStretch({required this.children});
+  KampongColumnSpaceBetweenStretch({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -132,9 +132,9 @@ class ColumnSpaceBetweenStretch extends StatelessWidget {
   }
 }
 
-class ColunSpaceEvenlyStretch extends StatelessWidget {
+class KampongColunSpaceEvenlyStretch extends StatelessWidget {
   final List<Widget> children;
-  ColunSpaceEvenlyStretch({required this.children});
+  KampongColunSpaceEvenlyStretch({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +146,9 @@ class ColunSpaceEvenlyStretch extends StatelessWidget {
   }
 }
 
-class ColumnStartCenter extends StatelessWidget {
+class KampongColumnStartCenter extends StatelessWidget {
   final List<Widget> children;
-  ColumnStartCenter({required this.children});
+  KampongColumnStartCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +160,9 @@ class ColumnStartCenter extends StatelessWidget {
   }
 }
 
-class ColumnStartStart extends StatelessWidget {
+class KampongColumnStartStart extends StatelessWidget {
   final List<Widget> children;
-  ColumnStartStart({required this.children});
+  KampongColumnStartStart({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -174,9 +174,9 @@ class ColumnStartStart extends StatelessWidget {
   }
 }
 
-class ColumnSpaceAroundCenter extends StatelessWidget {
+class KampongColumnSpaceAroundCenter extends StatelessWidget {
   final List<Widget> children;
-  ColumnSpaceAroundCenter({required this.children});
+  KampongColumnSpaceAroundCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -188,9 +188,9 @@ class ColumnSpaceAroundCenter extends StatelessWidget {
   }
 }
 
-class RowCenterCenter extends StatelessWidget {
+class KampongRowCenterCenter extends StatelessWidget {
   final List<Widget> children;
-  RowCenterCenter({required this.children});
+  KampongRowCenterCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -202,9 +202,9 @@ class RowCenterCenter extends StatelessWidget {
   }
 }
 
-class RowStartStart extends StatelessWidget {
+class KampongRowStartStart extends StatelessWidget {
   final List<Widget> children;
-  RowStartStart({required this.children});
+  KampongRowStartStart({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -216,9 +216,9 @@ class RowStartStart extends StatelessWidget {
   }
 }
 
-class RowStartCenter extends StatelessWidget {
+class KampongRowStartCenter extends StatelessWidget {
   final List<Widget> children;
-  RowStartCenter({required this.children});
+  KampongRowStartCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -230,9 +230,9 @@ class RowStartCenter extends StatelessWidget {
   }
 }
 
-class RowSpaceAroundCenter extends StatelessWidget {
+class KampongRowSpaceAroundCenter extends StatelessWidget {
   final List<Widget> children;
-  RowSpaceAroundCenter({required this.children});
+  KampongRowSpaceAroundCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -244,9 +244,9 @@ class RowSpaceAroundCenter extends StatelessWidget {
   }
 }
 
-class RowSpaceEvenlyCenter extends StatelessWidget {
+class KampongRowSpaceEvenlyCenter extends StatelessWidget {
   final List<Widget> children;
-  RowSpaceEvenlyCenter({required this.children});
+  KampongRowSpaceEvenlyCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -258,9 +258,9 @@ class RowSpaceEvenlyCenter extends StatelessWidget {
   }
 }
 
-class RowSpaceEvenlyStart extends StatelessWidget {
+class KampongRowSpaceEvenlyStart extends StatelessWidget {
   final List<Widget> children;
-  RowSpaceEvenlyStart({required this.children});
+  KampongRowSpaceEvenlyStart({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -272,9 +272,9 @@ class RowSpaceEvenlyStart extends StatelessWidget {
   }
 }
 
-class RowSpaceBetweenCenter extends StatelessWidget {
+class KampongRowSpaceBetweenCenter extends StatelessWidget {
   final List<Widget> children;
-  RowSpaceBetweenCenter({required this.children});
+  KampongRowSpaceBetweenCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -286,15 +286,29 @@ class RowSpaceBetweenCenter extends StatelessWidget {
   }
 }
 
-class RowEndCenter extends StatelessWidget {
+class KampongRowEndCenter extends StatelessWidget {
   final List<Widget> children;
-  RowEndCenter({required this.children});
+  KampongRowEndCenter({required this.children});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
+      children: children,
+    ); //Column
+  }
+}
+
+class KampongColumnSpaceAroundStart extends StatelessWidget {
+  final List<Widget> children;
+  KampongColumnSpaceAroundStart({required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: children,
     ); //Column
   }

@@ -23,8 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: "^1.3.0"
-  cloud_firestore: "^2.2.2"
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,12 +32,17 @@ dependencies:
   provider: ^5.0.0
   jiffy: ^4.1.0
   flutter_tabler_icons: ^1.1.1
-  firebase_auth: "^1.4.1"
-  google_sign_in: "^4.5.1"
+  supabase: ^0.0.1-dev.22
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  lottie: ^1.0.1
+  flutter_secure_storage: ^4.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^1.1.0
+  build_runner: ^2.0.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -51,6 +54,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - lottie/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -82,3 +88,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
