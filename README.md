@@ -12,7 +12,7 @@ A mobile-first solution for creating a home in a place far from home, for Overse
 ## Problem :frowning:
 Being in a foreign land, brings a lot of anxiety and confusion. 
 
-How can we lower the barrier of entry to ease the difficulty in transitioning while having a support structure?
+How might we lower the barrier of entry to ease the difficulty in transitioning while having a support structure?
 
 ## Target Users :dart:
 - Singaporeans who just moved to a new country or staying for a long period of time.
