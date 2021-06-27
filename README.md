@@ -2,7 +2,10 @@
 
 #### Powerpuff bois and Prof Chew | Code Fiesta
 
-![](./images/readme_logo.png)
+
+<p align="center">
+  <img width="900" src="./images/readme_logo.png">
+</p>
 
 A mobile-first solution for creating a home in a place far from home, for Overseas Singaporeans by Singaporeans.
 
