@@ -8,7 +8,22 @@
 
 A mobile-first solution for creating a home far from home, for overseas Singaporeans by Singaporeans.
 
-###### Built using [Flutter](https://flutter.dev) and [Supabase](https://supabase.io).
+## Tech Stack
+
+##### Front-end : [Flutter](https://flutter.dev)
+
+##### Back-end : [Supabase](https://supabase.io)
+
+## How to run
+
+```
+flutter pub get
+```
+```
+flutter run
+```
+
+**NOTE:** As the app requires credentials to connect to the backend, please contact the team for the API key and URL.
 
 ## Showcase
 <p align="center">
