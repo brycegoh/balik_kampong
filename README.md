@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img height="1000" src="./images/app.gif">
+  <img src="./images/app.gif">
 </p>
 
 A mobile-first solution for creating a home in a place far from home, for Overseas Singaporeans by Singaporeans.
