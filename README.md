@@ -7,6 +7,10 @@
   <img width="900" src="./images/readme_logo.png">
 </p>
 
+<p align="center">
+  <img width="900" src="./images/app.gif">
+</p>
+
 A mobile-first solution for creating a home in a place far from home, for Overseas Singaporeans by Singaporeans.
 
 ## Problem :frowning:
@@ -17,8 +21,12 @@ How might we lower the barrier of entry to ease the difficulty in transitioning 
 ## Target Users :dart:
 - Singaporeans who just moved to a new country or staying for a long period of time.
 
-## Pain points to addresses :worried:
-- Difficult to make meaningful relationships.
+## Pain points to address :worried:
+- Difficult to make meaningful relationships and make friends from a fresh start.
+- Singaporeans missing local food.
+- No trusted resource for a local Singaporean community to celebrate festivals and reminisce home.
+- Home sickness
+- Information overload
 
 ## Goals :star:
 - Finding a community who comes from the same culture as you and using that as a launch pad in creating relationships from both within and outside the Singaporean community.
@@ -67,6 +75,8 @@ citizenship verficiation
 #### Events
 
 :ballot_box_with_check: Link event location to maps
+
+:ballot_box_with_check: Livestream events happening in Singapore to overseas Singaporeans through WebRTC.
 
 #### Food
 
