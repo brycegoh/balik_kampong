@@ -7,11 +7,12 @@
   <img width="900" src="./images/readme_logo.png">
 </p>
 
-<p align="center">
-  <img src="./images/app.gif">
-</p>
-
 A mobile-first solution for creating a home in a place far from home, for Overseas Singaporeans by Singaporeans.
+
+## Showcase
+<p align="center">
+  <img width="350" src="./images/app.gif">
+</p>
 
 ## Problem :frowning:
 Being in a foreign land, brings a lot of anxiety and confusion. 
