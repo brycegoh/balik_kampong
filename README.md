@@ -16,6 +16,13 @@ A mobile-first solution for creating a home far from home, for Overseas Singapor
   <img width="350" src="./images/app.gif">
 </p>
 
+## Ideation and Design Works
+
+[Miro Ideation Board](https://miro.com/app/board/o9J_l9W2CQ0=/)
+
+[Figma Prototype](https://www.figma.com/file/s1FFWctwoVZcXKPA88MKaC/Codefiesta-prototype?node-id=41%3A11)
+
+
 ## Problem :frowning:
 Being in a foreign land, brings a lot of anxiety and confusion. 
 
