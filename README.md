@@ -4,7 +4,7 @@
 
 
 <p align="center">
-  <img width="900" src="./images/readme_logo.png">
+  <img width="900" src="./images/logo_slogan.png">
 </p>
 
 A mobile-first solution for creating a home far from home, for Overseas Singaporeans by Singaporeans.
