@@ -16,6 +16,13 @@ A mobile-first solution for creating a home far from home, for Overseas Singapor
   <img width="350" src="./images/app.gif">
 </p>
 
+## Design Process - Figma
+
+<p align="center">
+    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fs1FFWctwoVZcXKPA88MKaC%2FCodefiesta-prototype%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
+</p>
+
+
 ## Problem :frowning:
 Being in a foreign land, brings a lot of anxiety and confusion. 
 
