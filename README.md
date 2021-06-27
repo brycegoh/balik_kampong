@@ -8,7 +8,7 @@
 
 A mobile-first solution for creating a home far from home, for Overseas Singaporeans by Singaporeans.
 
-###### Built using Flutter and Supabase.
+###### Built using [Flutter](https://flutter.dev) and [Supabase](https://supabase.io).
 
 ## Showcase
 <p align="center">
