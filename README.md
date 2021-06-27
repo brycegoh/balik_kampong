@@ -4,8 +4,9 @@
 
 
 <p align="center">
-  <img width="400" src="./images/readme_logo.png">
+  <img width="900" src="./images/readme_logo.png">
 </p>
+
 A mobile-first solution for creating a home far from home, for Overseas Singaporeans by Singaporeans.
 
 ###### Built using Flutter and Supabase.
