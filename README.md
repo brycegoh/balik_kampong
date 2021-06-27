@@ -1,4 +1,4 @@
-# Balik Kampung
+# Balik Kampung - A home far from home
 
 ### Powerpuff bois and Prof Chew | Code Fiesta
 
@@ -7,7 +7,9 @@
   <img width="900" src="./images/readme_logo.png">
 </p>
 
-A mobile-first solution for creating a home in a place far from home, for Overseas Singaporeans by Singaporeans.
+A mobile-first solution for creating a home far from home, for Overseas Singaporeans by Singaporeans.
+
+###### Built using Flutter and Supabase.
 
 ## Showcase
 <p align="center">
