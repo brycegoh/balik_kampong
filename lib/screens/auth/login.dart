@@ -81,12 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   flex: 3,
                   child: KampongColumnCenterCenter(
                     children: [
-                      // Image(
-                      //   image: AssetImage('images/logo.png'),
-                      //   width: ScreenSize.safeAreaWidth(context) < 800
-                      //       ? ScreenSize.safeAreaWidth(context) * 0.6
-                      //       : 700,
-                      // ),
+                      Image(
+                        image: AssetImage('images/logo.png'),
+                        width: ScreenSize.safeAreaWidth(context) < 800
+                            ? ScreenSize.safeAreaWidth(context) * 0.7
+                            : 700,
+                      ),
                       TextField(
                         decoration: InputDecoration(labelText: "Email"),
                         controller: usernameController,

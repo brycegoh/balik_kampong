@@ -45,8 +45,10 @@ class _MyAppState extends State<MyApp> {
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Balik Kampong',
+              title: 'Balik Kampung',
               theme: ThemeData(
+                fontFamily: 'AvenirNext',
+                primarySwatch: Colors.blue,
                 backgroundColor: Colors.white,
               ),
               onGenerateRoute: PowerPuffRouter.powerRouter.generator,
