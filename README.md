@@ -2,7 +2,6 @@
 
 ### Powerpuff bois and Prof Chew | Code Fiesta
 
-
 <p align="center">
   <img width="900" src="./images/logo_slogan.png">
 </p>
