@@ -88,7 +88,7 @@ citizenship verficiation
 
 #### General 
 
-:white_check_mark: Caching of homescreen elements for quick load
+:white_check_mark: Caching of homescreen elements for responsive user experience.
 
 :white_check_mark: Search by name for all pages
 
