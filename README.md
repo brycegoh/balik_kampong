@@ -85,6 +85,8 @@ citizenship verficiation
 
 :ballot_box_with_check: Link event location to maps
 
+:ballot_box_with_check: Create event page
+
 :ballot_box_with_check: Livestream events happening in Singapore to overseas Singaporeans through WebRTC.
 
 #### Food
@@ -93,6 +95,13 @@ citizenship verficiation
 
 :ballot_box_with_check: Link all locations to google maps for offline viewing
 
+#### Profile Page
+
+:white_check_mark: Log out and clear sessions + storage
+
+:ballot_box_with_check: Change of font size settings
+
+:ballot_box_with_check: Change of personal interests
 
 #### General 
 
