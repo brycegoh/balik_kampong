@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../widgets/layout.dart';
 import '../../utility/screensize.dart';
+import '../../utility/constants.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class LoadingScreen extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: ScreenSize.safeAreaWidth(context) * 0.2,
           ),
-          child: Lottie.asset('lottie/loader.json'),
+          color: KampongColors.white,
         ),
       ),
     );

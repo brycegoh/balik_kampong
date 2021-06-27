@@ -31,19 +31,21 @@ class KampongFonts {
     color: Colors.black,
   );
 
+  static const headerUnbold = const TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 25,
+    color: Colors.black,
+  );
+
   static const subHeader = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 14,
   );
 
-  static const calendar = const TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
-  );
-
   static const label = const TextStyle(
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w300,
     fontSize: 14,
+    color: Colors.black,
   );
 
   static const labelAlt = const TextStyle(
@@ -56,8 +58,10 @@ class KampongFonts {
     fontSize: 11,
   );
 
-  static const labelSmall = const TextStyle(
-    fontSize: 12,
+  static const sos = const TextStyle(
+    fontSize: 18,
+    color: Colors.white,
+    fontWeight: FontWeight.w300,
   );
 
   static const bodyText = const TextStyle(

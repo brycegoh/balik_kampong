@@ -121,7 +121,7 @@ class KampongTile extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Color.fromRGBO(148, 157, 164, 0.35),
+              color: Color.fromRGBO(148, 157, 164, 0.25),
               borderRadius: BorderRadius.circular(20),
             ),
             height: height,
@@ -170,20 +170,8 @@ class KampongTextField extends StatelessWidget {
 
 PreferredSizeWidget kampongDefaultAppBar() {
   return KampongAppBar(
-      color: KampongColors.transparent,
-      trailing: Container(
-        padding: EdgeInsets.all(10),
-        child: IconButton(
-          onPressed: () {
-            print("hello");
-          },
-          icon: Icon(
-            TablerIcons.phone_call,
-            color: KampongColors.red,
-            size: 30,
-          ),
-        ),
-      ));
+    color: KampongColors.transparent,
+  );
 }
 
 class KampongChips extends StatelessWidget {

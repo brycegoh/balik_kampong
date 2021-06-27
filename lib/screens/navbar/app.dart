@@ -34,15 +34,37 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: kampongDefaultAppBar(),
-      body: IndexedStack(
-        index: currentIndex,
+      body: Stack(
         children: [
-          HomeScreen(),
-          BrowseCommunitiesScreen(),
-          BrowseEventScreen(),
-          BrowseFoodScreen(),
+          IndexedStack(
+            index: currentIndex,
+            children: [
+              HomeScreen(),
+              BrowseCommunitiesScreen(),
+              BrowseEventScreen(),
+              BrowseFoodScreen(),
+            ],
+          ),
+          Positioned(
+            bottom: 25,
+            right: 23,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Container(
+                margin: EdgeInsets.all(5),
+                child: Text(
+                  "SOS",
+                  style: KampongFonts.sos,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(10),
+                primary: Colors.blue,
+                shadowColor: KampongColors.black,
+              ),
+            ),
+          )
         ],
       ), // new
       bottomNavigationBar: BottomNavigationBar(

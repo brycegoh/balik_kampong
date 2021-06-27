@@ -20,6 +20,20 @@ class Event {
   String dateHappening;
   @HiveField(5)
   String subheader;
+  @HiveField(6)
+  String location;
+  @HiveField(7)
+  String endDate;
+  @HiveField(8)
+  String eventType;
+  @HiveField(9)
+  int hostId;
+  @HiveField(10)
+  String hostName;
+  @HiveField(11)
+  String eventDesc;
+  @HiveField(12)
+  String? hostContact;
 
   Event({
     required this.id,
@@ -28,6 +42,13 @@ class Event {
     required this.imageUrl,
     required this.dateHappening,
     required this.subheader,
+    required this.location,
+    required this.endDate,
+    required this.eventType,
+    required this.hostId,
+    required this.hostName,
+    required this.eventDesc,
+    this.hostContact,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -38,6 +59,12 @@ class Event {
       countryId: json['country_id'],
       imageUrl: json['image_url'],
       dateHappening: json["date_happening"],
+      location: json['location'],
+      endDate: json['ending_date'],
+      eventType: json['event_type'],
+      hostId: json["host_id"],
+      hostName: json["host_name"],
+      eventDesc: json["event_desc"],
     );
   }
 }

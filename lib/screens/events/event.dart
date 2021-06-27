@@ -1,3 +1,4 @@
+import 'package:jiffy/jiffy.dart';
 import 'package:balik_kampong/services/supaEvents.dart';
 import 'package:balik_kampong/widgets/default.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +58,27 @@ class _EventScreenState extends State<EventScreen> {
                       ),
                       Text(
                         count.toString() + " people attending",
-                        style: KampongFonts.labelDesc,
-                      )
+                        style: KampongFonts.label,
+                      ),
+                      _basicDetailRow(
+                        leadingText: "Location: ",
+                        trailingText: event.location,
+                      ),
+                      _basicDetailRow(
+                        leadingText: "Date: ",
+                        trailingText:
+                            Jiffy(event.dateHappening).format("dd/MM/yy HH:mm"),
+                      ),
+                      _basicDetailRow(
+                        leadingText: event.eventType[0].toUpperCase() +
+                            event.eventType.substring(1) +
+                            " " +
+                            "event",
+                      ),
+                      _basicDetailRow(
+                        leadingText: "Hosted by: ",
+                        trailingText: event.hostName,
+                      ),
                     ],
                   ),
                 ),
@@ -67,6 +87,23 @@ class _EventScreenState extends State<EventScreen> {
           }
         },
       ),
+    );
+  }
+
+  Widget _basicDetailRow({String? leadingText, String? trailingText}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 6),
+      child: RichText(
+          text: TextSpan(
+        style: KampongFonts.label,
+        children: <TextSpan>[
+          new TextSpan(
+            text: leadingText,
+            style: TextStyle(fontWeight: FontWeight.w600),
+          ),
+          new TextSpan(text: trailingText),
+        ],
+      )),
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:jiffy/jiffy.dart';
 
 import './supaClient.dart';
 import '../models/event.dart';
+import '../models/user.dart';
+import './supaUser.dart';
 
 class SupaEvents {
   static Future<dynamic> getLatestEvents(int? countryId) async {
@@ -66,6 +68,10 @@ class SupaEvents {
     PostgrestResponse response = await query.execute();
     if (response.error == null && response.data.length > 0) {
       container = Event.fromJson(response.data[0]);
+      int hostId = container.hostId;
+      Map<String, dynamic>? x = await SupaUser.getUserById(hostId);
+      UserData user = UserData.fromJson(x!);
+      container.hostContact = user.contact;
     }
     return container;
   }

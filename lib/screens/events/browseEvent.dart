@@ -175,7 +175,7 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
         child: KampongColumnStartCenter(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.only(top: 3),
               height: height * 0.65,
               width: width,
               decoration: new BoxDecoration(

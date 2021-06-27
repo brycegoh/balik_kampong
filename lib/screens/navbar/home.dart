@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 name,
-                style: KampongFonts.subHeader,
+                style: KampongFonts.headerUnbold,
               )
             ],
           ),
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             "Communities You Might Be Interested In",
-            style: KampongFonts.subHeader,
+            style: KampongFonts.headerUnbold,
           ),
           Container(
             height: ScreenSize.safeAreaHeight(context) * 0.3,
@@ -227,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             "Upcoming events",
-            style: KampongFonts.subHeader,
+            style: KampongFonts.headerUnbold,
           ),
           Container(
             height: ScreenSize.safeAreaHeight(context) * 0.3,

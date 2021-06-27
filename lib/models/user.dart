@@ -6,6 +6,7 @@ class UserData {
   String? imageUrl;
   List<String> interest;
   bool isOnboard;
+  String contact;
 
   UserData({
     required this.countryName,
@@ -17,6 +18,7 @@ class UserData {
     this.imageUrl = "",
     required this.countryId,
     this.isOnboard = false,
+    required this.contact,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class UserData {
       lastName: json['last_name'],
       imageUrl: json['image_url'],
       interest: List<String>.from(json["interest"].map((value) => value)),
+      contact: json["contact"],
     );
   }
 }

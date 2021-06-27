@@ -192,7 +192,7 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
         children: [
           Container(
             margin: EdgeInsets.only(top: 2),
-            height: height * 0.5,
+            height: height * 0.44,
             width: width,
             decoration: new BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
