@@ -1,6 +1,6 @@
 # Balik Kampung
 
-###### Powerpuff bois and Prof Chew | Code Fiesta
+## Powerpuff bois and Prof Chew | Code Fiesta
 
 ![](./images/readme_logo.png)
 
