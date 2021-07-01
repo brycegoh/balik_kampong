@@ -12,5 +12,6 @@ class Routes {
     router.define("/browse-events", handler: eventsHandler);
     router.define("/browse-communities", handler: communityHandler);
     router.define("/event", handler: specificEventHandler);
+    router.define("/dynamicform", handler: dynamicformHandler);
   }
 }

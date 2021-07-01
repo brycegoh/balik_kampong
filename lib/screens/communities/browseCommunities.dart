@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:balik_kampong/models/community.dart';
+import 'package:balik_kampong/services/supaClient.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:supabase/supabase.dart' as supa;
 
 import 'package:balik_kampong/services/supaCommunities.dart';
 import 'package:balik_kampong/utility/constants.dart';
@@ -24,6 +26,7 @@ class BrowseCommunitiesScreen extends StatefulWidget {
 class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
   late Future _loadCommunities;
   Timer? _debounce;
+  late final supa.RealtimeSubscription? sub;
 
   late List<Community> communities;
   final TextEditingController searchController = TextEditingController();
@@ -32,6 +35,9 @@ class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
   void dispose() {
     if (_debounce != null) {
       _debounce!.cancel();
+    }
+    if (sub != null) {
+      SupaClient.removeSub(sub!);
     }
 
     super.dispose();
@@ -43,10 +49,22 @@ class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
     int countryId = userProvider.user!.countryId;
 
     _loadCommunities = _getAllCommunties(countryId);
+
     super.initState();
   }
 
   Future _getAllCommunties(int countryId) async {
+    sub = SupaClient.subscribeToTable(
+      table: 'communities',
+      onInsert: ({newRecord}) {
+        Community newCommunity = Community.fromJson(newRecord);
+        List<Community> copy = communities = [...communities];
+        copy.add(newCommunity);
+        setState(() {
+          communities = copy;
+        });
+      },
+    );
     List<Community> allCommunities =
         await SupaCommunities.getAllCommunities(countryId: countryId);
     communities = allCommunities;
@@ -71,10 +89,25 @@ class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
                 child: KampongFullScreenContainer(
                   child: KampongColumnStartStart(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 11.5),
-                        child: Text("Communities Near You",
-                            style: KampongFonts.header),
+                      KampongRowSpaceBetweenCenter(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 11.5),
+                            child: Text("Communities Near You",
+                                style: KampongFonts.header),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 10),
+                            child: IconButton(
+                              icon: Icon(TablerIcons.plus),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, '/dynamicform?formId=1');
+                              },
+                            ),
+                          )
+                        ],
                       ),
                       _searchBar(context, countryId),
                       Expanded(

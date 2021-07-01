@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:provider/provider.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:supabase/supabase.dart' as supa;
 
 import 'package:balik_kampong/services/supaEvents.dart';
 import 'package:balik_kampong/utility/constants.dart';
@@ -12,6 +13,7 @@ import '../helper/loading.dart';
 import '../../models/event.dart';
 import '../../provider/user.dart';
 import '../../utility/screensize.dart';
+import '../../services/supaClient.dart';
 
 class BrowseEventScreen extends StatefulWidget {
   const BrowseEventScreen({Key? key}) : super(key: key);
@@ -23,6 +25,7 @@ class BrowseEventScreen extends StatefulWidget {
 class _BrowseEventScreenState extends State<BrowseEventScreen> {
   late Future _loadEvents;
   Timer? _debounce;
+  late final supa.RealtimeSubscription? sub;
 
   late List<Event> events;
   final TextEditingController searchController = TextEditingController();
@@ -31,6 +34,10 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
   void dispose() {
     if (_debounce != null) {
       _debounce!.cancel();
+    }
+
+    if (sub != null) {
+      SupaClient.removeSub(sub!);
     }
 
     super.dispose();
@@ -42,10 +49,22 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
     int countryId = userProvider.user!.countryId;
 
     _loadEvents = _getAllEvents(countryId);
+
     super.initState();
   }
 
   Future _getAllEvents(int countryId) async {
+    sub = SupaClient.subscribeToTable(
+      table: 'events',
+      onInsert: ({newRecord}) {
+        Event newEvent = Event.fromJson(newRecord);
+        List<Event> copy = [...events];
+        copy.add(newEvent);
+        setState(() {
+          events = copy;
+        });
+      },
+    );
     List<Event> allEvents = await SupaEvents.getAllEvents(countryId: countryId);
     events = allEvents;
   }
@@ -69,9 +88,24 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
                 child: KampongFullScreenContainer(
                   child: KampongColumnStartStart(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 11.5),
-                        child: Text("Events", style: KampongFonts.header),
+                      KampongRowSpaceBetweenCenter(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 11.5),
+                            child: Text("Events", style: KampongFonts.header),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 10),
+                            child: IconButton(
+                              icon: Icon(TablerIcons.plus),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, '/dynamicform?formId=2');
+                              },
+                            ),
+                          )
+                        ],
                       ),
                       Container(
                         height: ScreenSize.safeAreaHeight(context) * 0.05,

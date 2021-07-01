@@ -7,12 +7,12 @@ class SecureStorage {
   static const _supabaseSessionKey = "supabaseSessionKey";
 
   static Future storeSession(String sessionString) async {
-    await _secureStorage.delete(key: _supabaseSessionKey);
     await _secureStorage.write(key: _supabaseSessionKey, value: sessionString);
   }
 
   static Future<String?> getSession() async {
     String? session = await _secureStorage.read(key: _supabaseSessionKey);
+
     return session;
   }
 

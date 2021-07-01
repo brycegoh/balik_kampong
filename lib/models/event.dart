@@ -31,9 +31,9 @@ class Event {
   @HiveField(10)
   String hostName;
   @HiveField(11)
-  String eventDesc;
-  @HiveField(12)
   String? hostContact;
+  @HiveField(12)
+  String? livestreamURL;
 
   Event({
     required this.id,
@@ -47,7 +47,7 @@ class Event {
     required this.eventType,
     required this.hostId,
     required this.hostName,
-    required this.eventDesc,
+    this.livestreamURL = "",
     this.hostContact,
   });
 
@@ -59,12 +59,13 @@ class Event {
       countryId: json['country_id'],
       imageUrl: json['image_url'],
       dateHappening: json["date_happening"],
+      livestreamURL:
+          json.containsKey('livestream_url') ? json["livestream_url"] : null,
       location: json['location'],
       endDate: json['ending_date'],
       eventType: json['event_type'],
-      hostId: json["host_id"],
+      hostId: json["user_id"],
       hostName: json["host_name"],
-      eventDesc: json["event_desc"],
     );
   }
 }

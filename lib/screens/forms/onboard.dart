@@ -43,7 +43,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   Future _initForm() async {
     List<Country> countriesFromSupa = await SupaCountries.getCountries();
     List<Interest> interestFromSupa = await SupaInterest.getInterests();
-    print(interestFromSupa);
+
     setState(() {
       selectedCountry = null;
       countries = countriesFromSupa;

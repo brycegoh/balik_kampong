@@ -20,6 +20,13 @@ class UserProvider with ChangeNotifier {
     String? errorMsg = loginResponse["errorMsg"];
     user = loginResponse["user"];
 
+    if (errorMsg == null) {
+      print("persiting");
+      String seesionString = SupaClient.getPersistentString();
+
+      await SecureStorage.storeSession(seesionString);
+    }
+
     return {
       'success': loginResponse["success"],
       'user': loginResponse["user"],
@@ -61,7 +68,7 @@ class UserProvider with ChangeNotifier {
       if (userResponse.error == null) {
         String seesionString = SupaClient.getPersistentString();
 
-        SecureStorage.storeSession(seesionString);
+        await SecureStorage.storeSession(seesionString);
         user = UserData.fromJson(userResponse.data[0]);
       }
       return userResponse.error == null;

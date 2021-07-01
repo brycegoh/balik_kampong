@@ -10,6 +10,7 @@ import '../screens/navbar/app.dart';
 import '../screens/events/browseEvent.dart';
 import '../screens/communities/browseCommunities.dart';
 import '../screens/events/event.dart';
+import '../screens/forms/dynamicForm.dart';
 // var noRouteHandler =
 //     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
 //   return PathErrorScreen();
@@ -61,6 +62,12 @@ var specificEventHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   String eventId = params["eventId"]!.first;
   return EventScreen(eventId: int.parse(eventId));
+});
+
+var dynamicformHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  String formId = params["formId"]!.first;
+  return DynamicFormScreen(formId: int.parse(formId));
 });
 
 // var formRouteHandler =

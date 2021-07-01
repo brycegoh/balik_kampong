@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class Food {
   int id;
-  String name;
+  String name, foodName, location;
   int countryId;
   String imageUrl;
   List<String> interestTags;
@@ -14,6 +14,8 @@ class Food {
     required this.countryId,
     required this.imageUrl,
     required this.interestTags,
+    required this.foodName,
+    required this.location,
   });
 
   factory Food.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,8 @@ class Food {
       countryId: json['country_id'],
       imageUrl: json['image_url'],
       interestTags: List<String>.from(json['interest_tags'].map((e) => e)),
+      foodName: json["food_name"],
+      location: json["location"],
     );
   }
 }

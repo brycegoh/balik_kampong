@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:balik_kampong/models/food.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:supabase/supabase.dart' as supa;
 
 import 'package:balik_kampong/services/supaFood.dart';
 import 'package:balik_kampong/utility/constants.dart';
@@ -9,6 +10,7 @@ import 'package:balik_kampong/widgets/layout.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/loading.dart';
+import '../../services/supaClient.dart';
 import '../../provider/user.dart';
 import '../../utility/screensize.dart';
 import '../../widgets/default.dart';
@@ -25,14 +27,18 @@ class BrowseFoodScreen extends StatefulWidget {
 class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
   late Future _loadFood;
   Timer? _debounce;
+  late final supa.RealtimeSubscription? sub;
 
-  late List<Food> communities;
+  late List<Food> foodList;
   final TextEditingController searchController = TextEditingController();
 
   @override
   void dispose() {
     if (_debounce != null) {
       _debounce!.cancel();
+    }
+    if (sub != null) {
+      SupaClient.removeSub(sub!);
     }
 
     super.dispose();
@@ -44,12 +50,25 @@ class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
     int countryId = userProvider.user!.countryId;
 
     _loadFood = _getAllFood(countryId);
+
     super.initState();
   }
 
   Future _getAllFood(int countryId) async {
+    sub = SupaClient.subscribeToTable(
+      table: 'food',
+      onInsert: ({newRecord}) {
+        Food newFood = Food.fromJson(newRecord);
+
+        List<Food> copy = [...foodList];
+        copy.add(newFood);
+        setState(() {
+          foodList = copy;
+        });
+      },
+    );
     List<Food> allFood = await SupaFood.getAllFood(countryId: countryId);
-    communities = allFood;
+    foodList = allFood;
   }
 
   @override
@@ -71,16 +90,31 @@ class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
                 child: KampongFullScreenContainer(
                   child: KampongColumnStartStart(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 11.5),
-                        child: Text("Food just like home",
-                            style: KampongFonts.header),
+                      KampongRowSpaceBetweenCenter(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 11.5),
+                            child: Text("Food just like home",
+                                style: KampongFonts.header),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 10),
+                            child: IconButton(
+                              icon: Icon(TablerIcons.plus),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, '/dynamicform?formId=3');
+                              },
+                            ),
+                          )
+                        ],
                       ),
                       _searchBar(context, countryId),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 11.5),
-                          child: _scrollingFoodSection(communities),
+                          child: _scrollingFoodSection(foodList),
                         ),
                       ),
                     ],
@@ -112,12 +146,12 @@ class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
                   _debounce!.cancel();
                 }
                 _debounce = Timer(const Duration(milliseconds: 500), () async {
-                  List<Food> allCommunties = await SupaFood.getAllFood(
+                  List<Food> allFood = await SupaFood.getAllFood(
                     countryId: countryId,
                     search: searchController.text,
                   );
                   setState(() {
-                    communities = allCommunties;
+                    foodList = allFood;
                   });
                 });
               },
@@ -179,7 +213,7 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
 
   @override
   Widget build(BuildContext context) {
-    double height = ScreenSize.safeAreaHeight(context) * 0.4;
+    double height = ScreenSize.safeAreaHeight(context) * 0.3;
     double width = ScreenSize.safeAreaWidth(context) * 1;
     return Container(
       decoration: new BoxDecoration(
@@ -192,7 +226,7 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
         children: [
           Container(
             margin: EdgeInsets.only(top: 2),
-            height: height * 0.44,
+            height: height * 0.5,
             width: width,
             decoration: new BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -214,7 +248,7 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
           ),
           Container(
             margin: EdgeInsets.only(top: 5, bottom: 5),
-            height: height * 0.09,
+            height: height * 0.12,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: widget.food.interestTags.map((String tag) {

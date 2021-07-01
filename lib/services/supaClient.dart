@@ -18,4 +18,30 @@ class SupaClient {
   static String getPersistentString() {
     return supaBaseClient.auth.currentSession!.persistSessionString;
   }
+
+  static RealtimeSubscription subscribeToTable({
+    required String table,
+    required Function onInsert,
+    Function? delete,
+    Function? onUpdate,
+  }) {
+    print(table);
+    RealtimeSubscription chatSubscription =
+        supaBaseClient.from(table).on(SupabaseEventTypes.insert, (payload) {
+      print(payload.eventType);
+      print(payload.table);
+      switch (payload.eventType) {
+        case 'INSERT':
+          onInsert(newRecord: payload.newRecord);
+          break;
+      }
+    }).subscribe((String event, {String? errorMsg}) {
+      print('$table ----event: $event error: $errorMsg');
+    });
+    return chatSubscription;
+  }
+
+  static void removeSub(RealtimeSubscription sub) {
+    supaBaseClient.realtime.remove(sub);
+  }
 }

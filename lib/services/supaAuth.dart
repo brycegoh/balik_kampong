@@ -22,7 +22,7 @@ class SupaAuth {
       if (userResponse.error == null && userResponse.data.length > 0) {
         String seesionString = response.data!.persistSessionString;
 
-        SecureStorage.storeSession(seesionString);
+        await SecureStorage.storeSession(seesionString);
         user = UserData.fromJson(userResponse.data[0]);
       }
 
@@ -57,7 +57,6 @@ class SupaAuth {
   }
 
   static Future<Map<String, dynamic>> recoverSession() async {
-    await SecureStorage.deleteSession();
     final String? sessionString = await SecureStorage.getSession();
 
     if (sessionString != null) {
