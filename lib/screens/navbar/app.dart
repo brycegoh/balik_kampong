@@ -52,7 +52,7 @@ class _AppScreenState extends State<AppScreen> {
             child: ElevatedButton(
               onPressed: () {},
               child: Container(
-                margin: EdgeInsets.all(5),
+                margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 0),
                 child: Text(
                   "SOS",
                   style: KampongFonts.sos,

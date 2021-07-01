@@ -59,7 +59,7 @@ class KampongFonts {
   );
 
   static const sos = const TextStyle(
-    fontSize: 18,
+    fontSize: 20,
     color: Colors.white,
     fontWeight: FontWeight.w300,
   );
