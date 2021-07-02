@@ -25,11 +25,8 @@ class SupaClient {
     Function? delete,
     Function? onUpdate,
   }) {
-    print(table);
     RealtimeSubscription chatSubscription =
         supaBaseClient.from(table).on(SupabaseEventTypes.insert, (payload) {
-      print(payload.eventType);
-      print(payload.table);
       switch (payload.eventType) {
         case 'INSERT':
           onInsert(newRecord: payload.newRecord);

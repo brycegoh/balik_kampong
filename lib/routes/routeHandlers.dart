@@ -11,6 +11,8 @@ import '../screens/events/browseEvent.dart';
 import '../screens/communities/browseCommunities.dart';
 import '../screens/events/event.dart';
 import '../screens/forms/dynamicForm.dart';
+import '../screens/settings/settings.dart';
+import '../screens/webview/webview.dart';
 // var noRouteHandler =
 //     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
 //   return PathErrorScreen();
@@ -70,16 +72,14 @@ var dynamicformHandler = Handler(
   return DynamicFormScreen(formId: int.parse(formId));
 });
 
-// var formRouteHandler =
-//     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-//   String formId = params["formId"]?.first;
-//   String assessmentId = params["assessmentId"]?.first;
-//   final Map<String, bool> args = ModalRoute.of(context).settings.arguments;
-//   return FormScreen(
-//     formId: formId,
-//     assessmentId: assessmentId != null ? int.parse(assessmentId) : null,
-//     disableBack: (args != null && args.containsKey("disableBack"))
-//         ? args["disableBack"]
-//         : null,
-//   );
-// });
+var settingsHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return SettingsScreen();
+});
+
+var webviewHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  String? url = params["url"]?.first;
+  print(url);
+  return WebViewScreen(url: url);
+});

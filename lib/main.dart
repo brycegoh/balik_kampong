@@ -5,8 +5,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import './routes/fluroRouter.dart';
 import 'provider/user.dart';
+import 'provider/fontSize.dart';
 import 'screens/splashscreen/splashScreen.dart';
 import './utility/hiveBox.dart';
+import './MaterialApp.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,18 +44,9 @@ class _MyAppState extends State<MyApp> {
           return MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (context) => UserProvider()),
+              ChangeNotifierProvider(create: (context) => FontProvider()),
             ],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Balik Kampung',
-              theme: ThemeData(
-                fontFamily: 'AvenirNext',
-                primarySwatch: Colors.blue,
-                backgroundColor: Colors.white,
-              ),
-              onGenerateRoute: PowerPuffRouter.powerRouter.generator,
-              home: SplashScreen(),
-            ),
+            child: MApp(),
           );
         } else {
           return Container(

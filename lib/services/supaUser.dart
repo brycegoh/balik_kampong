@@ -33,7 +33,7 @@ class SupaUser {
     if (response.error != null) {
       print(response.error!.message);
     }
-    print(response.data);
+
     return {
       "success": response.error == null,
       "user": response.data[0],

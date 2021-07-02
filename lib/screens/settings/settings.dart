@@ -25,7 +25,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Container(
           height: ScreenSize.safeAreaHeight(context),
           width: ScreenSize.safeAreaWidth(context),
-          child: KampongColumnStartCenter(
+          margin: EdgeInsets.symmetric(horizontal: 11.5),
+          child: KampongColumnStartStart(
             children: [
               _fontSlider(fontProvider),
             ],
@@ -36,15 +37,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _fontSlider(FontProvider fontProvider) {
-    return Slider(
-      value: fontProvider.multiplier,
-      min: 0.8,
-      max: 1.4,
-      divisions: 3,
-      label: fontProvider.mapper[value],
-      onChanged: (double x) {
-        fontProvider.setMultiplier(x);
-      },
+    Map<double, String> mapper = {
+      0.8: "SMALL",
+      1.0: "DEFAULT",
+      1.2: "MEDIUM",
+      1.4: "LARGE",
+    };
+
+    return KampongColumnStartStart(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child:
+              Text('Font Size', style: Theme.of(context).textTheme.headline1),
+        ),
+        Slider(
+          value: fontProvider.multiplier,
+          min: 0.8,
+          max: 1.4,
+          divisions: 3,
+          label: mapper[fontProvider.multiplier],
+          onChanged: (double x) {
+            fontProvider.setMultiplier(x);
+          },
+        ),
+      ],
     );
   }
 }

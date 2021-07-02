@@ -15,6 +15,7 @@ import '../../models/dynamicForm.dart';
 import '../../services/supaCountries.dart';
 import '../../services/supaForm.dart';
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 
 class DynamicFormScreen extends StatefulWidget {
   final int formId;
@@ -229,7 +230,7 @@ class _DynamicFormScreenState extends State<DynamicFormScreen> {
               header != null
                   ? Text(
                       header,
-                      style: KampongFonts.subHeader,
+                      style: Theme.of(context).textTheme.bodyText1,
                     )
                   : Container(),
               ...widgets.map((KeyValuePair e) {
@@ -266,7 +267,7 @@ class _DynamicFormScreenState extends State<DynamicFormScreen> {
                   children: [
                     Text(
                       header,
-                      style: KampongFonts.subHeader,
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     Wrap(
                       alignment: WrapAlignment.start,
@@ -314,7 +315,7 @@ class _DynamicFormScreenState extends State<DynamicFormScreen> {
               header != null
                   ? Text(
                       header,
-                      style: KampongFonts.subHeader,
+                      style: Theme.of(context).textTheme.headline2,
                     )
                   : Container(),
               ...widgets.map((KeyValuePair e) {

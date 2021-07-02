@@ -35,37 +35,13 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: IndexedStack(
+        index: currentIndex,
         children: [
-          IndexedStack(
-            index: currentIndex,
-            children: [
-              HomeScreen(),
-              BrowseCommunitiesScreen(),
-              BrowseEventScreen(),
-              BrowseFoodScreen(),
-            ],
-          ),
-          Positioned(
-            bottom: 25,
-            right: 23,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Container(
-                margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 0),
-                child: Text(
-                  "SOS",
-                  style: KampongFonts.sos,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(10),
-                primary: Colors.blue,
-                shadowColor: KampongColors.black,
-              ),
-            ),
-          )
+          HomeScreen(),
+          BrowseCommunitiesScreen(),
+          BrowseEventScreen(),
+          BrowseFoodScreen(),
         ],
       ), // new
       bottomNavigationBar: BottomNavigationBar(

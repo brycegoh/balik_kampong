@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import '../../widgets/layout.dart';
 import '../../widgets/default.dart';
 import '../../utility/constants.dart';
 import '../../utility/screensize.dart';
 import '../../services/supaCountries.dart';
+import '../../services/supaBanner.dart';
 import '../../services/supaCommunities.dart';
 import '../../services/supaEvents.dart';
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 import '../../models/country.dart';
 import '../../models/community.dart';
+import '../../models/banner.dart' as ban;
 import '../../models/event.dart';
 import '../../models/user.dart';
 import '../../models/interest.dart';
 import '../../utility/hiveConstants.dart';
+import '../webview/webview.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,8 +31,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future initBanners;
   late final Box countryBox, communityBox, eventBox;
   String? dropdownValue;
+  late List<ban.Banner> banners;
 
   @override
   void initState() {
@@ -40,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     communityBox = Hive.box<Community>(HiveBoxes.community);
     eventBox = Hive.box<Event>(HiveBoxes.event);
     _initCountries();
+    initBanners = _initBanners();
     _initCommunities(
       countryId: user.countryId,
       interests: interests,
@@ -56,23 +64,58 @@ class _HomeScreenState extends State<HomeScreen> {
     String imageUrl = user.imageUrl!;
 
     return Scaffold(
-        body: KampongPaddedSafeArea(
-      child: KampongFullScreenContainer(
-        child: SingleChildScrollView(
-          child: Container(
-            width: ScreenSize.safeAreaWidth(context) * 0.85,
-            margin: EdgeInsets.symmetric(horizontal: 15),
-            child: KampongColumnStartCenter(
-              children: [
-                _welcomeHeader(fullname, imageUrl),
-                _countrySelector(userProvider),
-                _communitiesSlider(),
-                _eventsSlider(),
-              ],
+        body: Stack(
+      children: [
+        KampongPaddedSafeArea(
+          child: FutureBuilder(
+            future: initBanners,
+            builder: (context, snapshot) => KampongFullScreenContainer(
+              child: SingleChildScrollView(
+                child: Container(
+                  width: ScreenSize.safeAreaWidth(context) * 0.85,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: KampongColumnStartCenter(
+                    children: [
+                      _welcomeHeader(
+                        fullname,
+                        imageUrl,
+                      ),
+                      _countrySelector(
+                        userProvider,
+                      ),
+                      snapshot.connectionState == ConnectionState.waiting
+                          ? Container()
+                          : BannerView(banners: banners),
+                      _communitiesSlider(),
+                      _eventsSlider(),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        Positioned(
+          bottom: 25,
+          right: 23,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Container(
+              margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 0),
+              child: Text(
+                "SOS",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(10),
+              primary: Colors.blue,
+              shadowColor: KampongColors.black,
+            ),
+          ),
+        ),
+      ],
     ));
   }
 
@@ -100,22 +143,39 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Future<void> _initBanners() async {
+    List<ban.Banner> listOfBanners = await SupaBanner.getBanners();
+    setState(() {
+      banners = listOfBanners;
+    });
+  }
+
   Widget _welcomeHeader(String name, String imageUrl) {
     return Container(
       margin: EdgeInsets.only(top: 20, bottom: 10),
       height: ScreenSize.safeAreaHeight(context) * 0.12,
       child: KampongRowSpaceBetweenCenter(
         children: [
-          KampongColumnSpaceAroundStart(
+          KampongColumnStartStart(
             children: [
-              Text(
-                "Welcome",
-                overflow: TextOverflow.ellipsis,
-                style: KampongFonts.header,
+              KampongRowSpaceBetweenCenter(
+                children: [
+                  Text(
+                    "Welcome",
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                  IconButton(
+                    icon: Icon(TablerIcons.settings),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                  )
+                ],
               ),
               Text(
                 name,
-                style: KampongFonts.headerUnbold,
+                style: Theme.of(context).textTheme.headline3,
               )
             ],
           ),
@@ -149,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(TablerIcons.arrow_down),
               elevation: 20,
               menuMaxHeight: ScreenSize.safeAreaHeight(context) * 0.3,
-              style: KampongFonts.countryDropDown,
+              style: Theme.of(context).textTheme.headline4,
               dropdownColor: KampongColors.slab,
               items: countries.map((Country e) {
                 return DropdownMenuItem(
@@ -189,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             "Communities You Might Be Interested In",
-            style: KampongFonts.headerUnbold,
+            style: Theme.of(context).textTheme.headline4,
           ),
           Container(
             height: ScreenSize.safeAreaHeight(context) * 0.3,
@@ -227,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             "Upcoming events",
-            style: KampongFonts.headerUnbold,
+            style: Theme.of(context).textTheme.headline4,
           ),
           Container(
             height: ScreenSize.safeAreaHeight(context) * 0.3,
@@ -256,6 +316,61 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class BannerView extends StatelessWidget {
+  final List<ban.Banner> banners;
+  const BannerView({Key? key, required this.banners}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 25),
+      height: ScreenSize.safeAreaHeight(context) * 0.18,
+      width: ScreenSize.safeAreaWidth(context),
+      child: CarouselSlider(
+        options: CarouselOptions(
+          height: 400.0,
+          autoPlay: true,
+          autoPlayInterval: Duration(seconds: 2),
+          autoPlayAnimationDuration: Duration(milliseconds: 800),
+          autoPlayCurve: Curves.fastOutSlowIn,
+        ),
+        items: banners.map((ban.Banner banner) {
+          return Builder(
+            builder: (BuildContext context) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebViewScreen(
+                        url: banner.url,
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: KampongColors.sand,
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        banner.imageUrl,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  width: ScreenSize.safeAreaWidth(context) * 0.8,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                ),
+              );
+            },
+          );
+        }).toList(),
       ),
     );
   }

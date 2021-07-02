@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import '../helper/loading.dart';
 import '../../services/supaClient.dart';
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 import '../../utility/screensize.dart';
 import '../../widgets/default.dart';
 import '../../models/user.dart';
@@ -73,6 +74,7 @@ class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     int countryId = userProvider.user!.countryId;
     return FutureBuilder(
@@ -92,11 +94,15 @@ class _BrowseFoodScreenState extends State<BrowseFoodScreen> {
                     children: [
                       KampongRowSpaceBetweenCenter(
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 11.5),
-                            child: Text("Food just like home",
-                                style: KampongFonts.header),
+                          Flexible(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 11.5),
+                              child: Text(
+                                "Food just like home",
+                                style: Theme.of(context).textTheme.headline1,
+                              ),
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 10),
@@ -213,7 +219,11 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
 
   @override
   Widget build(BuildContext context) {
-    double height = ScreenSize.safeAreaHeight(context) * 0.3;
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
+    double height = ScreenSize.safeAreaHeight(context) *
+        0.3 *
+        fontProvider.multiplier *
+        1.2;
     double width = ScreenSize.safeAreaWidth(context) * 1;
     return Container(
       decoration: new BoxDecoration(
@@ -239,15 +249,17 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
           ),
           KampongRowSpaceBetweenCenter(
             children: [
-              KampongColumnStartStart(
-                children: [
-                  Text(widget.food.name, style: KampongFonts.header),
-                ],
+              Flexible(
+                child: KampongColumnStartStart(
+                  children: [
+                    Text(widget.food.name,
+                        style: Theme.of(context).textTheme.headline1),
+                  ],
+                ),
               ),
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 5, bottom: 5),
             height: height * 0.12,
             child: ListView(
               scrollDirection: Axis.horizontal,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:provider/provider.dart';
 
+import '../../provider/fontSize.dart';
 import '../widgets/layout.dart';
 import '../widgets/appBar.dart';
 import '../utility/constants.dart';
@@ -20,13 +22,14 @@ class KampongButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           primary: KampongColors.blue,
-          textStyle: KampongFonts.label,
+          textStyle: Theme.of(context).textTheme.headline3,
         ),
         child: isLoading
             ? SizedBox(
@@ -96,6 +99,7 @@ class KampongTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
     double height = ScreenSize.safeAreaHeight(context) * 0.3;
     double width = ScreenSize.safeAreaWidth(context) * 0.75;
 
@@ -134,7 +138,7 @@ class KampongTile extends StatelessWidget {
             left: 30,
             child: Text(
               text,
-              style: KampongFonts.tileText,
+              style: Theme.of(context).textTheme.headline5,
               overflow: TextOverflow.visible,
             ),
           ),
@@ -180,6 +184,7 @@ class KampongChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
     return Chip(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: KampongColors.black, width: 3),
@@ -190,7 +195,10 @@ class KampongChips extends StatelessWidget {
           fit: BoxFit.contain,
           child: KampongColumnStartCenter(children: [
             Container(
-                padding: const EdgeInsets.only(bottom: 8.0), child: Text(tag))
+                child: Text(
+              tag,
+              style: Theme.of(context).textTheme.headline4,
+            ))
           ])),
     );
   }

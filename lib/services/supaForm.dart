@@ -49,7 +49,6 @@ class SupaForm {
     });
 
     if (table == "events" && container.containsKey('livestream_url')) {
-      print(container['livestream_url']);
       if (container['livestream_url'] != null &&
           container['livestream_url'].length > 0) {
         container['event_type'] = "virtual";
@@ -57,7 +56,7 @@ class SupaForm {
     } else if (table == 'events') {
       container['event_type'] = "physical";
     }
-    print(container);
+
     var response =
         await SupaClient.supaBaseClient.from(table).insert(container).execute();
 

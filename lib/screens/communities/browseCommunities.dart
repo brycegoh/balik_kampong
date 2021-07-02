@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 
 import '../helper/loading.dart';
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 import '../../utility/screensize.dart';
 import '../../widgets/default.dart';
 
@@ -91,11 +92,15 @@ class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
                     children: [
                       KampongRowSpaceBetweenCenter(
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 11.5),
-                            child: Text("Communities Near You",
-                                style: KampongFonts.header),
+                          Flexible(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 11.5),
+                              child: Text(
+                                "Communities Near You",
+                                style: Theme.of(context).textTheme.headline1,
+                              ),
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 10),
@@ -214,7 +219,9 @@ class _KampongBrowsingCommunityTileState
 
   @override
   Widget build(BuildContext context) {
-    double height = ScreenSize.safeAreaHeight(context) * 0.3;
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
+    double height =
+        ScreenSize.safeAreaHeight(context) * 0.4 * fontProvider.multiplier;
     double width = ScreenSize.safeAreaWidth(context) * 1;
     return Container(
       decoration: new BoxDecoration(
@@ -238,32 +245,52 @@ class _KampongBrowsingCommunityTileState
                   ),
                 )),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 5, bottom: 5),
-            height: height * 0.11,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: widget.community.interestTags.map((String tag) {
-                return Container(
-                  margin: EdgeInsets.only(left: 5),
-                  child: KampongChips(tag: tag),
-                );
-              }).toList(),
+          Flexible(
+            child: Container(
+              margin: EdgeInsets.only(top: 5, bottom: 5),
+              height: height * 0.11,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: widget.community.interestTags.map((String tag) {
+                  return Container(
+                    margin: EdgeInsets.only(left: 5),
+                    child: KampongChips(tag: tag),
+                  );
+                }).toList(),
+              ),
             ),
           ),
-          KampongRowSpaceBetweenCenter(
-            children: [
-              KampongColumnStartStart(
-                children: [
-                  Text(widget.community.name, style: KampongFonts.header),
-                  Text(widget.community.subheader,
-                      style: KampongFonts.subHeader),
-                ],
-              ),
-              Text(count.toString() +
-                  " " +
-                  "${count == 1 ? "Member" : "Members"}"),
-            ],
+          Flexible(
+            child: KampongRowSpaceBetweenCenter(
+              children: [
+                KampongColumnStartStart(
+                  children: [
+                    Text(widget.community.name,
+                        style: Theme.of(context).textTheme.headline1),
+                    Flexible(
+                      child: Container(
+                        width: width * 0.9,
+                        child: KampongRowSpaceBetweenCenter(
+                          children: [
+                            Flexible(
+                              child: Text(widget.community.subheader,
+                                  style: Theme.of(context).textTheme.headline4),
+                            ),
+                            Flexible(
+                              child: Text(
+                                  count.toString() +
+                                      " " +
+                                      "${count == 1 ? "Member" : "Members"}",
+                                  style: Theme.of(context).textTheme.headline4),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
         ],
       ),

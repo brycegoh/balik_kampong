@@ -1,7 +1,9 @@
+import 'package:balik_kampong/provider/fontSize.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:balik_kampong/services/supaEvents.dart';
 import 'package:balik_kampong/widgets/default.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/layout.dart';
 import './browseEvent.dart';
@@ -10,6 +12,7 @@ import '../../utility/screensize.dart';
 import '../../widgets/appBar.dart';
 import '../../models/event.dart';
 import '../helper/loading.dart';
+import '../../provider/fontSize.dart';
 
 class EventScreen extends StatefulWidget {
   final int eventId;
@@ -58,7 +61,7 @@ class _EventScreenState extends State<EventScreen> {
                       ),
                       Text(
                         count.toString() + " people attending",
-                        style: KampongFonts.label,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       _basicDetailRow(
                         leadingText: "Location: ",
@@ -90,12 +93,15 @@ class _EventScreenState extends State<EventScreen> {
     );
   }
 
-  Widget _basicDetailRow({String? leadingText, String? trailingText}) {
+  Widget _basicDetailRow({
+    String? leadingText,
+    String? trailingText,
+  }) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 6),
       child: RichText(
           text: TextSpan(
-        style: KampongFonts.label,
+        style: Theme.of(context).textTheme.bodyText1,
         children: <TextSpan>[
           new TextSpan(
             text: leadingText,

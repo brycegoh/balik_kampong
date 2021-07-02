@@ -3,6 +3,7 @@ import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 import '../../services/supaAuth.dart';
 import '../../widgets/layout.dart';
 import '../../widgets/default.dart';
@@ -95,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           onPressed: onTapSignUp,
                           style: ElevatedButton.styleFrom(
                             primary: KampongColors.blue,
-                            textStyle: KampongFonts.label,
+                            textStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                           child: _isLoading
                               ? SizedBox(

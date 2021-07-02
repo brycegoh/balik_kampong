@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import '../helper/loading.dart';
 import '../../models/event.dart';
 import '../../provider/user.dart';
+import '../../provider/fontSize.dart';
 import '../../utility/screensize.dart';
 import '../../services/supaClient.dart';
 
@@ -79,6 +80,7 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return LoadingScreen();
         } else {
+          final fontProvider = Provider.of<FontProvider>(context, listen: true);
           return Scaffold(
             body: GestureDetector(
               onTap: () {
@@ -93,7 +95,8 @@ class _BrowseEventScreenState extends State<BrowseEventScreen> {
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 11.5),
-                            child: Text("Events", style: KampongFonts.header),
+                            child: Text("Events",
+                                style: Theme.of(context).textTheme.headline1),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 10),
@@ -192,7 +195,8 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
 
   @override
   Widget build(BuildContext context) {
-    double height = ScreenSize.safeAreaHeight(context) * 0.27;
+    final fontProvider = Provider.of<FontProvider>(context, listen: true);
+    double height = ScreenSize.safeAreaHeight(context) * 0.25;
     double width = ScreenSize.safeAreaWidth(context) * 1;
     return InkWell(
       onTap: widget.isClickable
@@ -204,7 +208,7 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
         margin: EdgeInsets.symmetric(
           vertical: 1,
         ),
-        height: height,
+        height: height * fontProvider.multiplier * 1.2,
         width: width,
         child: KampongColumnStartCenter(
           children: [
@@ -223,15 +227,18 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
             ),
             KampongRowSpaceBetweenCenter(
               children: [
-                KampongColumnStartStart(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 5),
-                      child:
-                          Text(widget.event.name, style: KampongFonts.header),
-                    ),
-                    Text(widget.event.subheader, style: KampongFonts.subHeader),
-                  ],
+                Flexible(
+                  child: KampongColumnStartStart(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        child: Text(widget.event.name,
+                            style: Theme.of(context).textTheme.headline1),
+                      ),
+                      Text(widget.event.subheader,
+                          style: Theme.of(context).textTheme.headline3),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 3),
@@ -242,7 +249,7 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: KampongColors.blue,
-                            textStyle: KampongFonts.label,
+                            textStyle: Theme.of(context).textTheme.bodyText1,
                           ),
                           child: _isLoading
                               ? SizedBox(
