@@ -23,15 +23,14 @@ flutter pub get
 flutter run
 ```
 
-**ANDROID** Android SDK 19 and above is required.
+**ANDROID:** Android SDK 19 and above is required.
 
 **NOTE:** As the app requires credentials to connect to the backend, please contact the team for the API key and URL.
 
 ## Showcase
-[Link to youtube video](https://youtu.be/qJ4DATTnHGY)
-
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/qJ4DATTnHGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p align="center">
+  <img width="350" src="./images/newapp.gif">
+</p>
 
 ## Ideation and Design Works
 
@@ -90,20 +89,31 @@ citizenship verficiation
 
 :white_check_mark: Browse Food Page
 
+#### Dynamic Forms
+
+:white_check_mark: Form Page dynamically generated from JSON configuration
+
+:white_check_mark: Validation based on JSON configuration
+
+:white_check_mark: Updates Supabase tables based on JSON configuration
+
+:white_check_mark: Make JSON configuration for forms that create events, food and communities
+
+#### Webview / banners
+
+:white_check_mark: Add webview banners that are dynamically generated from URLs from database
 
 #### Details Pages
 
 :white_check_mark: Each event page with details
 
-:white_check_mark: Each community page with details
+:ballot_box_with_check: Each community page with details
 
-:white_check_mark: Each food review page with details
+:ballot_box_with_check: Each food review page with details
 
 #### Events
 
 :ballot_box_with_check: Link event location to maps
-
-:ballot_box_with_check: Create event page
 
 :ballot_box_with_check: Livestream events happening in Singapore to overseas Singaporeans through WebRTC.
 
@@ -121,6 +131,14 @@ citizenship verficiation
 
 :ballot_box_with_check: Change of personal interests
 
+#### Settings
+
+:white_check_mark: Able to change font size
+
+:ballot_box_with_check: Log out buttons
+
+:ballot_box_with_check: Change user data
+
 #### General 
 
 :white_check_mark: Caching of homescreen elements for responsive user experience.
@@ -133,7 +151,9 @@ citizenship verficiation
 
 #### Wellness and emergency services
 
-:ballot_box_with_check: Emergency contacts
+:white_check_mark:  Emergency contacts
+
+:white_check_mark: Contacts link straight to phone's phone or mail app
 
 :ballot_box_with_check: Chat with a therapist from Singapore Association for mental health
 
