@@ -23,6 +23,8 @@ flutter pub get
 flutter run
 ```
 
+**ANDROID** Android SDK 19 and above is required.
+
 **NOTE:** As the app requires credentials to connect to the backend, please contact the team for the API key and URL.
 
 ## Showcase

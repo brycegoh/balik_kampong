@@ -230,7 +230,7 @@ class _DynamicFormScreenState extends State<DynamicFormScreen> {
               header != null
                   ? Text(
                       header,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.headline2,
                     )
                   : Container(),
               ...widgets.map((KeyValuePair e) {

@@ -57,7 +57,7 @@ class SupaAuth {
   }
 
   static Future<Map<String, dynamic>> recoverSession() async {
-    final String? sessionString = await SecureStorage.getSession();
+    final String? sessionString = SecureStorage.getSession();
 
     if (sessionString != null) {
       ///// restore session

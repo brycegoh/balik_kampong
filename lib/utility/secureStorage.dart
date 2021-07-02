@@ -1,22 +1,22 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase/supabase.dart';
 
 class SecureStorage {
-  static final _secureStorage = FlutterSecureStorage();
-
   static const _supabaseSessionKey = "supabaseSessionKey";
 
   static Future storeSession(String sessionString) async {
-    await _secureStorage.write(key: _supabaseSessionKey, value: sessionString);
+    Box sess = Hive.box<String>("SESSION");
+    await sess.put('SESSION', sessionString);
   }
 
-  static Future<String?> getSession() async {
-    String? session = await _secureStorage.read(key: _supabaseSessionKey);
-
+  static String? getSession() {
+    Box sess = Hive.box<String>("SESSION");
+    String? session = sess.get("SESSION");
     return session;
   }
 
   static Future deleteSession() async {
-    await _secureStorage.delete(key: _supabaseSessionKey);
+    Box sess = Hive.box<String>("SESSION");
+    await sess.deleteFromDisk();
   }
 }

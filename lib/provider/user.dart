@@ -57,6 +57,8 @@ class UserProvider with ChangeNotifier {
     if (user != null) {
       user!.countryId = newCountryId;
       user!.countryName = newCountryName;
+
+      notifyListeners();
     }
   }
 

@@ -54,9 +54,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final fontProvider = Provider.of<FontProvider>(context, listen: true);
     final userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
           padding: EdgeInsets.fromLTRB(
             23,
@@ -67,9 +67,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
           child: KampongPaddedSafeArea(
               child: KampongColumnStartCenter(
             children: [
-              _basicNameTextFields(fontProvider),
-              _countrySelector(fontProvider),
-              _chipsWrapInterstSelector(fontProvider),
+              _basicNameTextFields(),
+              _countrySelector(),
+              _chipsWrapInterstSelector(),
               KampongButton(
                 text: "Submit",
                 isLoading: isSubmitting,
@@ -101,12 +101,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
     );
   }
 
-  Widget _countrySelector(fontProvider) {
+  Widget _countrySelector() {
     return KampongColumnStartStart(
       children: [
         Text(
           "Which Kampong are you at?",
-          style: fontProvider.subHeader,
+          style: Theme.of(context).textTheme.headline2,
         ),
         Container(
           margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
@@ -125,7 +125,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               icon: const Icon(TablerIcons.arrow_down),
               elevation: 20,
               menuMaxHeight: ScreenSize.safeAreaHeight(context) * 0.3,
-              style: fontProvider.countryDropDown,
+              style: Theme.of(context).textTheme.headline3,
               dropdownColor: KampongColors.slab,
               items: countries.map((Country e) {
                 return DropdownMenuItem(
@@ -155,7 +155,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
     );
   }
 
-  Widget _chipsWrapInterstSelector(fontProvider) {
+  Widget _chipsWrapInterstSelector() {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
       child: KampongColumnStartStart(
@@ -164,7 +164,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
             children: [
               Text(
                 "What interests you?",
-                style: fontProvider.subHeader,
+                style: Theme.of(context).textTheme.headline2,
               ),
               Wrap(
                 alignment: WrapAlignment.start,
@@ -197,15 +197,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
     );
   }
 
-  Widget _basicNameTextFields(fontProvider) {
+  Widget _basicNameTextFields() {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 5, 0, 30),
       child: KampongColumnStartStart(
         children: [
-          Text(
-            "About you",
-            style: fontProvider.subHeader,
-          ),
+          Text("About you", style: Theme.of(context).textTheme.headline2),
           KampongTextField(
             labelText: "First Name",
             controller: firstNameController,

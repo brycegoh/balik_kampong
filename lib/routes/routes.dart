@@ -15,5 +15,6 @@ class Routes {
     router.define("/dynamicform", handler: dynamicformHandler);
     router.define("/settings", handler: settingsHandler);
     router.define("/webview", handler: webviewHandler);
+    router.define("/sos", handler: sosHandler);
   }
 }

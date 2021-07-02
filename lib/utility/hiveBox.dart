@@ -18,6 +18,7 @@ class HiveBox {
     await Hive.openBox<Country>(HiveBoxes.countries);
     await Hive.openBox<Community>(HiveBoxes.community);
     await Hive.openBox<Event>(HiveBoxes.event);
+    await Hive.openBox<String>("SESSION");
   }
 
   static deleteBoxes() async {

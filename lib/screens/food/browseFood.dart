@@ -284,8 +284,11 @@ class _KampongBrowsingFoodTileState extends State<KampongBrowsingFoodTile> {
                   : Container(),
               review != null
                   ? Expanded(
-                      child:
-                          Text(review!.review, overflow: TextOverflow.ellipsis),
+                      child: Text(
+                        review!.review,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     )
                   : Container(),
             ],

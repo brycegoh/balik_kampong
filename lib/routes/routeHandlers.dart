@@ -12,6 +12,7 @@ import '../screens/communities/browseCommunities.dart';
 import '../screens/events/event.dart';
 import '../screens/forms/dynamicForm.dart';
 import '../screens/settings/settings.dart';
+import '../screens/sos/sos.dart';
 import '../screens/webview/webview.dart';
 // var noRouteHandler =
 //     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -80,6 +81,11 @@ var settingsHandler = Handler(
 var webviewHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   String? url = params["url"]?.first;
-  print(url);
   return WebViewScreen(url: url);
+});
+
+var sosHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  String countryId = params["countryId"]!.first;
+  return SosScreen(countryId: int.parse(countryId));
 });

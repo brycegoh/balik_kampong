@@ -35,7 +35,7 @@ class MApp extends StatelessWidget {
             color: Colors.black,
           ),
           headline4: TextStyle(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w300,
             fontSize: 17 * fontProvider.multiplier,
             color: Colors.black87,
           ),
@@ -44,8 +44,16 @@ class MApp extends StatelessWidget {
             color: Colors.white,
             fontWeight: FontWeight.w300,
           ),
+          headline6: TextStyle(
+            fontSize: 17 * fontProvider.multiplier,
+            fontWeight: FontWeight.w300,
+          ),
           bodyText1: TextStyle(
             fontSize: 12 * fontProvider.multiplier,
+          ),
+          bodyText2: TextStyle(
+            fontSize: 15 * fontProvider.multiplier,
+            color: Colors.blue,
           ),
         ),
       ),

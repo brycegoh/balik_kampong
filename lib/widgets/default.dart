@@ -70,7 +70,10 @@ class KampongInptChips extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(3.0),
-              child: Text(label),
+              child: Text(
+                label,
+                style: Theme.of(context).textTheme.headline6,
+              ),
             ),
             Container(
               padding: EdgeInsets.only(bottom: 4),

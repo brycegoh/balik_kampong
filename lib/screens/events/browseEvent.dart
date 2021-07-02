@@ -196,7 +196,7 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
   @override
   Widget build(BuildContext context) {
     final fontProvider = Provider.of<FontProvider>(context, listen: true);
-    double height = ScreenSize.safeAreaHeight(context) * 0.25;
+    // double height = ScreenSize.safeAreaHeight(context) * 0.7;
     double width = ScreenSize.safeAreaWidth(context) * 1;
     return InkWell(
       onTap: widget.isClickable
@@ -208,13 +208,13 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
         margin: EdgeInsets.symmetric(
           vertical: 1,
         ),
-        height: height * fontProvider.multiplier * 1.2,
+        // height: height * fontProvider.multiplier * 0.9,
         width: width,
         child: KampongColumnStartCenter(
           children: [
             Container(
               margin: EdgeInsets.only(top: 3),
-              height: height * 0.65,
+              height: ScreenSize.safeAreaHeight(context) * 0.2,
               width: width,
               decoration: new BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -236,6 +236,7 @@ class _KampongBrowsingEventTileState extends State<KampongBrowsingEventTile> {
                             style: Theme.of(context).textTheme.headline1),
                       ),
                       Text(widget.event.subheader,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.headline3),
                     ],
                   ),

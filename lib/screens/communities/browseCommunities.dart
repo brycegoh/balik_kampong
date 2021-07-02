@@ -73,7 +73,7 @@ class _BrowseCommunitiesScreenState extends State<BrowseCommunitiesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: true);
     int countryId = userProvider.user!.countryId;
     return FutureBuilder(
       future: _loadCommunities,
@@ -219,7 +219,7 @@ class _KampongBrowsingCommunityTileState
 
   @override
   Widget build(BuildContext context) {
-    final fontProvider = Provider.of<FontProvider>(context, listen: true);
+    final fontProvider = Provider.of<FontProvider>(context, listen: false);
     double height =
         ScreenSize.safeAreaHeight(context) * 0.4 * fontProvider.multiplier;
     double width = ScreenSize.safeAreaWidth(context) * 1;
@@ -234,7 +234,7 @@ class _KampongBrowsingCommunityTileState
         children: [
           Container(
             margin: EdgeInsets.only(top: 2),
-            height: height * 0.6,
+            height: ScreenSize.safeAreaHeight(context) * 0.2,
             width: width,
             decoration: new BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),

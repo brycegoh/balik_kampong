@@ -37,6 +37,19 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<ban.Banner> banners;
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
   void initState() {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     UserData user = userProvider.user!;
@@ -99,7 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: 25,
           right: 23,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                  context, '/sos?countryId=${userProvider.user!.countryId}');
+            },
             child: Container(
               margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 0),
               child: Text(
@@ -335,8 +351,8 @@ class BannerView extends StatelessWidget {
         options: CarouselOptions(
           height: 400.0,
           autoPlay: true,
-          autoPlayInterval: Duration(seconds: 2),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
+          autoPlayInterval: Duration(seconds: 3),
+          autoPlayAnimationDuration: Duration(milliseconds: 1000),
           autoPlayCurve: Curves.fastOutSlowIn,
         ),
         items: banners.map((ban.Banner banner) {
