@@ -27,7 +27,7 @@ flutter run
 
 **NOTE:** As the app requires credentials to connect to the backend, please contact the team for the API key and URL.
 
-## Showcase
+## App Demo
 <p align="center">
   <img width="350" src="./images/newapp.gif">
 </p>
@@ -37,6 +37,8 @@ flutter run
 [Miro Ideation Board](https://miro.com/app/board/o9J_l9W2CQ0=/)
 
 [Figma Prototype](https://www.figma.com/file/s1FFWctwoVZcXKPA88MKaC/Codefiesta-prototype?node-id=41%3A11)
+
+[App Showcase](https://youtu.be/F948VNT98yA)
 
 
 ## Problem :frowning:
