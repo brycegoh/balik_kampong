@@ -91,8 +91,15 @@ class _SosScreenState extends State<SosScreen> {
                             flex: 1,
                             child: TextButton(
                               onPressed: () async {
-                                final _url = 'tel://${e.contact}';
-                                await launch(_url);
+                                if (e.name == "Email") {
+                                  String _url =
+                                      'mailto://${e.contact}?subject=Enquiry&body=Dear Staff,';
+                                  await launch(_url);
+                                } else {
+                                  String _url =
+                                      'tel://${e.contact.replaceAll(" ", "")}';
+                                  await launch(_url);
+                                }
                               },
                               child: Text(e.contact,
                                   style: Theme.of(context).textTheme.bodyText2),
@@ -122,10 +129,12 @@ class _SosScreenState extends State<SosScreen> {
                             child: TextButton(
                               onPressed: () async {
                                 if (e.name == "Email") {
-                                  final _url = 'mailto://${e.contact}';
+                                  String _url =
+                                      'mailto://${e.contact}?subject=Enquiry&body=Dear Staff,';
                                   await launch(_url);
                                 } else {
-                                  final _url = 'tel://${e.contact}';
+                                  String _url =
+                                      'tel://${e.contact.replaceAll(" ", "")}';
                                   await launch(_url);
                                 }
                               },
@@ -156,8 +165,15 @@ class _SosScreenState extends State<SosScreen> {
                             flex: 1,
                             child: TextButton(
                               onPressed: () async {
-                                final _url = 'tel://${e.contact}';
-                                await launch(_url);
+                                if (e.name == "Email") {
+                                  String _url =
+                                      'mailto://${e.contact}?subject=Enquiry&body=Dear Staff,';
+                                  await launch(_url);
+                                } else {
+                                  String _url =
+                                      'tel://${e.contact.replaceAll(" ", "")}';
+                                  await launch(_url);
+                                }
                               },
                               child: Text(e.contact,
                                   style: Theme.of(context).textTheme.bodyText2),
@@ -190,8 +206,14 @@ class _SosScreenState extends State<SosScreen> {
                             flex: 1,
                             child: TextButton(
                               onPressed: () async {
-                                final _url = 'tel://${e.contact}';
-                                await launch(_url);
+                                if (e.name == "Email") {
+                                  String _url = 'mailto:${e.contact}';
+                                  await launch(_url);
+                                } else {
+                                  String _url =
+                                      'tel://${e.contact.replaceAll(" ", "")}';
+                                  await launch(_url);
+                                }
                               },
                               child: Text(e.contact,
                                   style: Theme.of(context).textTheme.bodyText2),
