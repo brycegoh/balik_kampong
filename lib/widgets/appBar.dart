@@ -29,7 +29,7 @@ class KampongAppBar extends StatelessWidget with PreferredSizeWidget {
     var userProvider = context.read<UserProvider>();
     return Container(
       child: AppBar(
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         backgroundColor: color ?? KampongColors.blue,
         shadowColor: Colors.transparent,
         elevation: 0.0,

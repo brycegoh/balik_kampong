@@ -66,20 +66,16 @@ class _SosScreenState extends State<SosScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Flexible(
-                        child: Text(
-                          'Emergency Hotlines',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      child: Text(
+                        'Emergency Hotlines',
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Flexible(
-                        child: Text(
-                          'Medical Hotlines',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      child: Text(
+                        'Medical Hotlines',
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     ...medical.map((e) {
@@ -87,12 +83,12 @@ class _SosScreenState extends State<SosScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: KampongRowSpaceBetweenCenter(children: [
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: Text(e.name,
                                 style: Theme.of(context).textTheme.headline6),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: TextButton(
                               onPressed: () async {
                                 final _url = 'tel://${e.contact}';
@@ -107,11 +103,9 @@ class _SosScreenState extends State<SosScreen> {
                     }),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Flexible(
-                        child: Text(
-                          'Embassy Hotlines',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      child: Text(
+                        'Embassy Hotlines',
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     ...embassy.map((e) {
@@ -119,12 +113,12 @@ class _SosScreenState extends State<SosScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: KampongRowSpaceBetweenCenter(children: [
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: Text(e.name,
                                 style: Theme.of(context).textTheme.headline6),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: TextButton(
                               onPressed: () async {
                                 if (e.name == "Email") {
@@ -144,11 +138,9 @@ class _SosScreenState extends State<SosScreen> {
                     }),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Flexible(
-                        child: Text(
-                          'Police Hotlines',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      child: Text(
+                        'Police Hotlines',
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     ...police.map((e) {
@@ -156,12 +148,12 @@ class _SosScreenState extends State<SosScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: KampongRowSpaceBetweenCenter(children: [
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: Text(e.name,
                                 style: Theme.of(context).textTheme.headline6),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: TextButton(
                               onPressed: () async {
                                 final _url = 'tel://${e.contact}';
@@ -180,12 +172,9 @@ class _SosScreenState extends State<SosScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Flexible(
-                        flex: 2,
-                        child: Text(
-                          'Singapore Association for Mental Health',
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      child: Text(
+                        'Singapore Association for Mental Health',
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     ...mental.map((e) {
@@ -193,12 +182,12 @@ class _SosScreenState extends State<SosScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: KampongRowSpaceBetweenCenter(children: [
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: Text(e.name,
                                 style: Theme.of(context).textTheme.headline6),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: TextButton(
                               onPressed: () async {
                                 final _url = 'tel://${e.contact}';
